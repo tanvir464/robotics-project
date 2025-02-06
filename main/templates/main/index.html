@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .site-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .search-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .search-input {
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            transition: width 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+        .search-input.active {
+            width: 200px;
+            opacity: 1;
+            border: 1px solid #ccc;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        /* Slide Styles */
+        .slide {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        #slide1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('{% static "images/background.jpg" %}') center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        #slide2 {
+            padding: 4rem 2rem;
+        }
+
+        .content-row {
+            margin: 2rem 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .square-image {
+            width: 40rem;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="site-name">Robotics Project</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Weekly Update</a></li>
+                <li><a href="#">Software</a></li>
+                <li><a href="#">Hardware</a></li>
+                <li><a href="#">Prototype</a></li>
+                <li class="dropdown">
+                    <a href="#">Literature Review</a>
+                    <div class="dropdown-content">
+                        <a href="#">Research Papers</a>
+                        <a href="#">Conference Proceedings</a>
+                        <a href="#">Journal Articles</a>
+                        <a href="#">Technical Reports</a>
+                    </div>
+                </li>
+                <li><a href="#">Component Details</a></li>
+                <li><a href="#">Component Cost</a></li>
+                <li><a href="#">Pre-survey</a></li>
+                <li><a href="#">Draft paper</a></li>
+                <li class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="slide1" class="slide">
+        <h1>Welcome to Our Site</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="scroll-indicator">
+            <i class="fas fa-arrow-down"></i>
+        </div>
+    </section>
+
+    <section id="slide2" class="slide">
+        <div class="content-row">
+            <h2>Our Project</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="content-row two-column">
+            <div>
+                <img src="{% static 'images/project.jpeg' %}" alt="Project Image" class="square-image">
+            </div>
+            <div>
+                <h2>Project Features</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>COPYRIGHT ©2025, Independent University, Bangladesh</div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+    <script>
+        // Search functionality
+        document.querySelector('.search-icon').addEventListener('click', function(e) {
+            e.preventDefault();
+            const searchInput = document.querySelector('.search-input');
+            searchInput.classList.toggle('active');
+            if (searchInput.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchContainer = document.querySelector('.search-container');
+            const searchInput = document.querySelector('.search-input');
+            if (!searchContainer.contains(e.target)) {
+                searchInput.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
