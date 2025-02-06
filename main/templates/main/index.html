@@ -42,27 +42,39 @@
         }
 
         .search-container {
-            position: relative;
-            display: inline-block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .search-container.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .search-input {
-            position: absolute;
-            right: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 4px;
-            transition: width 0.3s ease-in-out;
-            opacity: 0;
+            width: 30%;
+            padding: 12px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            opacity: 1;
+            transition: none;
         }
 
-        .search-input.active {
-            width: 200px;
-            opacity: 1;
-            border: 1px solid #ccc;
+        .search-icon {
+            cursor: pointer;
         }
 
         .dropdown {
@@ -78,10 +90,7 @@
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
             border-radius: 4px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
+            margin-top: 20px;
         }
 
         .dropdown-content a {
@@ -96,13 +105,41 @@
             border-radius: 4px;
         }
 
+        .dropdown-toggle::after {
+            content: ' \25BC';
+            margin-left: 5px;
+        }
+
+        .dropdown.active .dropdown-toggle::after {
+            content: ' \25B2';
+        }
+
+        .back-button {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Slide Styles */
-        .slide {
+        .slide1 {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 2rem;
+        }
+
+        .slide2 {
+            height: 80.5vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 80px;
+            margin-right: 80px;
         }
 
         #slide1 {
@@ -143,15 +180,23 @@
 
         .two-column {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 5fr;
             gap: 2rem;
             align-items: center;
         }
 
         .square-image {
-            width: 40rem;
+            width: 25rem;
             aspect-ratio: 1;
             object-fit: cover;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
         }
 
         /* Footer Styles */
@@ -185,27 +230,28 @@
                 <li><a href="#">Hardware</a></li>
                 <li><a href="#">Prototype</a></li>
                 <li class="dropdown">
-                    <a href="#">Literature Review</a>
+                    <a href="#" class="dropdown-toggle">Literature Review</a>
                     <div class="dropdown-content">
-                        <a href="#">Research Papers</a>
-                        <a href="#">Conference Proceedings</a>
-                        <a href="#">Journal Articles</a>
-                        <a href="#">Technical Reports</a>
+                        <a href="#">Member 1</a>
+                        <a href="#">Member 2</a>
+                        <a href="#">Member 3</a>
+                        <a href="#">Member 4</a>
                     </div>
                 </li>
                 <li><a href="#">Component Details</a></li>
                 <li><a href="#">Component Cost</a></li>
                 <li><a href="#">Pre-survey</a></li>
                 <li><a href="#">Draft paper</a></li>
-                <li class="search-container">
-                    <input type="text" class="search-input" placeholder="Search...">
-                    <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
-                </li>
+                <li class="search-icon"><i class="fas fa-search"></i></li>
             </ul>
         </nav>
     </header>
+    <div class="search-container">
+        <button class="back-button"><i class="fas fa-arrow-left"></i></button>
+        <input type="text" class="search-input" placeholder="Search...">
+    </div>
 
-    <section id="slide1" class="slide">
+    <section id="slide1" class="slide1">
         <h1>Welcome to Our Site</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <div class="scroll-indicator">
@@ -213,10 +259,20 @@
         </div>
     </section>
 
-    <section id="slide2" class="slide">
+    <section id="slide2" class="slide2">
         <div class="content-row">
             <h2>Our Project</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
         </div>
         <div class="content-row two-column">
             <div>
@@ -224,7 +280,27 @@
             </div>
             <div>
                 <h2>Project Features</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
             </div>
         </div>
     </section>
@@ -241,9 +317,10 @@
         // Search functionality
         document.querySelector('.search-icon').addEventListener('click', function(e) {
             e.preventDefault();
-            const searchInput = document.querySelector('.search-input');
-            searchInput.classList.toggle('active');
-            if (searchInput.classList.contains('active')) {
+            const searchContainer = document.querySelector('.search-container');
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                const searchInput = document.querySelector('.search-input');
                 searchInput.focus();
             }
         });
@@ -251,10 +328,37 @@
         // Close search when clicking outside
         document.addEventListener('click', function(e) {
             const searchContainer = document.querySelector('.search-container');
-            const searchInput = document.querySelector('.search-input');
-            if (!searchContainer.contains(e.target)) {
-                searchInput.classList.remove('active');
+            const searchIcon = document.querySelector('.search-icon');
+            if (!searchContainer.contains(e.target) && !searchIcon.contains(e.target)) {
+                searchContainer.classList.remove('active');
             }
+        });
+
+        // Close search when clicking the back button
+        document.querySelector('.back-button').addEventListener('click', function() {
+            const searchContainer = document.querySelector('.search-container');
+            searchContainer.classList.remove('active');
+        });
+
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdown = this.parentElement;
+                dropdown.classList.toggle('active');
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+                dropdownContent.style.display = dropdown.classList.contains('active') ? 'block' : 'none';
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                    dropdown.querySelector('.dropdown-content').style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
