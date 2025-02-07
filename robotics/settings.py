@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'software',
     'survey',
     'weekly',
+    'django_distill',
 ]
 
 MIDDLEWARE = [
