@@ -1,4 +1,4 @@
 [build]
-  command = "gunicorn project_name.wsgi"
+  command = "gunicorn robotics.wsgi"
   functions = "netlify/functions"
   publish = "static"
