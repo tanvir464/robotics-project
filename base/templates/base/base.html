@@ -15,7 +15,7 @@
         <div class="site-name">Robotics Project</div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'weekly' %}">Weekly Update</a></li>
                 <li><a href="#">Software</a></li>
@@ -48,11 +48,6 @@
 
     <footer>
         <div>COPYRIGHT ©2025, Independent University, Bangladesh</div>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
     </footer>
     <script src="{% static 'js/script.js' %}"></script>
 </body>
