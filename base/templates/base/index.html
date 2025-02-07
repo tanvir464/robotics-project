@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %} | Robotics</title>
+    <link rel="icon" href="{% static 'images/project.jpeg' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="site-name">Robotics Project</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Weekly Update</a></li>
+                <li><a href="#">Software</a></li>
+                <li><a href="#">Hardware</a></li>
+                <li><a href="#">Prototype</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Literature Review</a>
+                    <div class="dropdown-content">
+                        <a href="#">Member 1</a>
+                        <a href="#">Member 2</a>
+                        <a href="#">Member 3</a>
+                        <a href="#">Member 4</a>
+                    </div>
+                </li>
+                <li><a href="#">Component Details</a></li>
+                <li><a href="#">Component Cost</a></li>
+                <li><a href="#">Pre-survey</a></li>
+                <li><a href="#">Draft paper</a></li>
+                <li class="search-icon"><i class="fas fa-search"></i></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="search-container">
+        <button class="back-button"><i class="fas fa-arrow-left"></i></button>
+        <input type="text" class="search-input" placeholder="Search...">
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <div>COPYRIGHT ©2025, Independent University, Bangladesh</div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
