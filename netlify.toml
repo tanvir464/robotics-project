@@ -1,0 +1,4 @@
+[build]
+    environment = { PYTHON_VERSION = "3.13" }
+  command = "pip install -r requirements.txt && python manage.py distill-local output/"
+  publish = "output"
